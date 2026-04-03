@@ -1,0 +1,29 @@
+# Python Environment
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+venv/
+venv_py313/
+
+# Project Data (STRICTLY PRIVATE)
+memory/nikolai_memory.db
+security/vault.key
+REMINDERS.txt
+
+# Interface Cache
+interface/__pycache__/
+core/__pycache__/
+memory/__pycache__/
+security/__pycache__/
+
+# Node Modules
+node_modules/
+package-lock.json
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
