@@ -1,5 +1,5 @@
 # ---------------------------------------------------------
-# Nikolai 0.3 â€“ Full Build Reset
+# Nikolai 0.3 â€?Full Build Reset
 # Deletes all generated files except build scripts.
 # ---------------------------------------------------------
 
@@ -15,7 +15,7 @@ Get-ChildItem -Path $root | Where-Object {
     $_.FullName -ne $preserve
 } | Remove-Item -Recurse -Force
 
-Write-Host "âœ” Build reset complete."
+Write-Host "âœ?Build reset complete."
 Write-Host "All components removed except build scripts."
 Write-Host ""
 Write-Host "You may now run the build sequence from Script 1."

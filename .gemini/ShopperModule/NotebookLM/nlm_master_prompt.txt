@@ -1,9 +1,9 @@
 You are a Senior Android Architect and Systems Engineer specializing in Accessibility Services and Edge Computing.
-Your task is to analyze the 'research_bundle.txt' which contains the Technical Architecture Specification for the Shopper Assistant Node (SAN).
+Your task is to analyze the 'research_bundle.txt' which contains the Technical Architecture Specification for the Shopper Assistant Node (AISLES).
 
 Based on this architecture, you must produce two highly detailed, engineering-grade prompts for a GCLI agent:
 
-1. GCLI_BUILD_PROMPT: This prompt must instruct the GCLI agent to build the full Android SAN application. It must detail the implementation requirements for:
+1. GCLI_BUILD_PROMPT: This prompt must instruct the GCLI agent to build the full Android AISLES application. It must detail the implementation requirements for:
    - Android Project Structure (Gradle, Manifest, Resources)
    - AccessibilityService (Lifecycle, Event Filtering, Traversal)
    - OCR Pipeline (ONNX Runtime, PaddleOCR integration, Fusion)
@@ -21,3 +21,4 @@ Based on this architecture, you must produce two highly detailed, engineering-gr
    - Functional completeness across all 10 implementation phases.
 
 Return only the content for these two prompts in a structured format that can be easily extracted.
+

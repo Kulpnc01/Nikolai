@@ -1,5 +1,5 @@
 # ---------------------------------------------
-# Nikolai 0.3 â€“ Body-Based Folder Structure Builder
+# Nikolai 0.3 â€?Body-Based Folder Structure Builder
 # Creates the full directory skeleton + placeholder files
 # ---------------------------------------------
 
@@ -15,8 +15,8 @@ $folders = @(
     "$root\brain\reasoning",
     "$root\brain\runtime",
 
-    "$root\modules\ShopperModule\pipeline\incoming",
-    "$root\modules\ShopperModule\pipeline\outgoing",
+    "$root\modules\Module_AISLES\pipeline\incoming",
+    "$root\modules\Module_AISLES\pipeline\outgoing",
     "$root\modules\HelpDiagnosticModule\logic",
     "$root\modules\HelpDiagnosticModule\pipeline\incoming",
     "$root\modules\HelpDiagnosticModule\pipeline\outgoing",
@@ -49,7 +49,7 @@ $packageDirs = @(
     "$root\hands",
     "$root\reflexes",
     "$root\modules",
-    "$root\modules\ShopperModule",
+    "$root\modules\Module_AISLES",
     "$root\modules\HelpDiagnosticModule",
     "$root\modules\HelpDiagnosticModule\logic"
 )
@@ -62,3 +62,4 @@ foreach ($dir in $packageDirs) {
 }
 
 Write-Host "Nikolai 0.3 folder structure and packages initialized successfully."
+

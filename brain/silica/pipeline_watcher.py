@@ -10,9 +10,9 @@ class SilicaPipelineWatcher:
         self.event_loop = event_loop
         self.modules_dir = modules_dir
         self.expected_artifacts = {
-            "san_build_spec.txt",
-            "san_final_spec.txt",
-            "shopper_assistant_node_san.zip",
+            "AISLES_build_spec.txt",
+            "AISLES_final_spec.txt",
+            "shopper_assistant_node_AISLES.zip",
             "module_contract.json",
         }
         self.known_modules: Set[str] = set()
@@ -34,3 +34,4 @@ class SilicaPipelineWatcher:
                                     "path": module_path
                                 })
             await asyncio.sleep(poll_interval)
+

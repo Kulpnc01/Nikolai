@@ -3,7 +3,7 @@
 import grpc
 import warnings
 
-import san_protocol_pb2 as san__protocol__pb2
+import aisles_protocol_pb2 as aisles__protocol__pb2
 
 GRPC_GENERATED_VERSION = '1.71.2'
 GRPC_VERSION = grpc.__version__
@@ -18,14 +18,14 @@ except ImportError:
 if _version_not_supported:
     raise RuntimeError(
         f'The grpc package installed is at version {GRPC_VERSION},'
-        + f' but the generated code in san_protocol_pb2_grpc.py depends on'
+        + f' but the generated code in aisles_protocol_pb2_grpc.py depends on'
         + f' grpcio>={GRPC_GENERATED_VERSION}.'
         + f' Please upgrade your grpc module to grpcio>={GRPC_GENERATED_VERSION}'
         + f' or downgrade your generated code using grpcio-tools<={GRPC_VERSION}.'
     )
 
 
-class ShopperAssistantNodeStub(object):
+class AISLESNodeStub(object):
     """Missing associated documentation comment in .proto file."""
 
     def __init__(self, channel):
@@ -35,56 +35,56 @@ class ShopperAssistantNodeStub(object):
             channel: A grpc.Channel.
         """
         self.StreamTelemetry = channel.stream_unary(
-                '/san.ShopperAssistantNode/StreamTelemetry',
-                request_serializer=san__protocol__pb2.TelemetryRequest.SerializeToString,
-                response_deserializer=san__protocol__pb2.TelemetryResponse.FromString,
+                '/aisles.AISLESNode/StreamTelemetry',
+                request_serializer=aisles__protocol__pb2.TelemetryRequest.SerializeToString,
+                response_deserializer=aisles__protocol__pb2.TelemetryResponse.FromString,
                 _registered_method=True)
         self.StreamCommands = channel.unary_stream(
-                '/san.ShopperAssistantNode/StreamCommands',
-                request_serializer=san__protocol__pb2.CommandRequest.SerializeToString,
-                response_deserializer=san__protocol__pb2.CommandResponse.FromString,
+                '/aisles.AISLESNode/StreamCommands',
+                request_serializer=aisles__protocol__pb2.CommandRequest.SerializeToString,
+                response_deserializer=aisles__protocol__pb2.CommandResponse.FromString,
                 _registered_method=True)
 
 
-class ShopperAssistantNodeServicer(object):
+class AISLESNodeServicer(object):
     """Missing associated documentation comment in .proto file."""
 
     def StreamTelemetry(self, request_iterator, context):
-        """SAN pushes telemetry to Nikolai
+        """AISLES pushes telemetry to Nikolai
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def StreamCommands(self, request, context):
-        """Nikolai pushes commands to SAN
+        """Nikolai pushes commands to AISLES
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
 
-def add_ShopperAssistantNodeServicer_to_server(servicer, server):
+def add_AISLESNodeServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'StreamTelemetry': grpc.stream_unary_rpc_method_handler(
                     servicer.StreamTelemetry,
-                    request_deserializer=san__protocol__pb2.TelemetryRequest.FromString,
-                    response_serializer=san__protocol__pb2.TelemetryResponse.SerializeToString,
+                    request_deserializer=aisles__protocol__pb2.TelemetryRequest.FromString,
+                    response_serializer=aisles__protocol__pb2.TelemetryResponse.SerializeToString,
             ),
             'StreamCommands': grpc.unary_stream_rpc_method_handler(
                     servicer.StreamCommands,
-                    request_deserializer=san__protocol__pb2.CommandRequest.FromString,
-                    response_serializer=san__protocol__pb2.CommandResponse.SerializeToString,
+                    request_deserializer=aisles__protocol__pb2.CommandRequest.FromString,
+                    response_serializer=aisles__protocol__pb2.CommandResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'san.ShopperAssistantNode', rpc_method_handlers)
+            'aisles.AISLESNode', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('san.ShopperAssistantNode', rpc_method_handlers)
+    server.add_registered_method_handlers('aisles.AISLESNode', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
-class ShopperAssistantNode(object):
+class AISLESNode(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
@@ -101,9 +101,9 @@ class ShopperAssistantNode(object):
         return grpc.experimental.stream_unary(
             request_iterator,
             target,
-            '/san.ShopperAssistantNode/StreamTelemetry',
-            san__protocol__pb2.TelemetryRequest.SerializeToString,
-            san__protocol__pb2.TelemetryResponse.FromString,
+            '/aisles.AISLESNode/StreamTelemetry',
+            aisles__protocol__pb2.TelemetryRequest.SerializeToString,
+            aisles__protocol__pb2.TelemetryResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -128,9 +128,9 @@ class ShopperAssistantNode(object):
         return grpc.experimental.unary_stream(
             request,
             target,
-            '/san.ShopperAssistantNode/StreamCommands',
-            san__protocol__pb2.CommandRequest.SerializeToString,
-            san__protocol__pb2.CommandResponse.FromString,
+            '/aisles.AISLESNode/StreamCommands',
+            aisles__protocol__pb2.CommandRequest.SerializeToString,
+            aisles__protocol__pb2.CommandResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -140,3 +140,4 @@ class ShopperAssistantNode(object):
             timeout,
             metadata,
             _registered_method=True)
+

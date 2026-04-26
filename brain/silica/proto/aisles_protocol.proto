@@ -1,12 +1,12 @@
 syntax = "proto3";
 
-package san;
+package aisles;
 
-service ShopperAssistantNode {
-  // SAN pushes telemetry to Nikolai
+service AISLESNode {
+  // AISLES pushes telemetry to Nikolai
   rpc StreamTelemetry (stream TelemetryRequest) returns (TelemetryResponse);
   
-  // Nikolai pushes commands to SAN
+  // Nikolai pushes commands to AISLES
   rpc StreamCommands (CommandRequest) returns (stream CommandResponse);
 }
 
@@ -30,3 +30,5 @@ message CommandResponse {
   string action = 2;
   string parameters_json = 3;
 }
+
+

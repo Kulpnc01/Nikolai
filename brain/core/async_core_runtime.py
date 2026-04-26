@@ -155,3 +155,5 @@ class AsyncCoreRuntime:
         except Exception as e:
             logger.error(f"Help module execution failed: {e}")
             return "Help logic currently unavailable (Module logic mismatch)."
+
+

@@ -1,6 +1,6 @@
-# GCLI_REVIEW_PROMPT â€” SAN Quality Assurance
+# GCLI_REVIEW_PROMPT â€?AISLES Quality Assurance
 
-You are a Security Architect and Lead QA Auditor. Your task is to validate the SAN Android application build against the Technical Architecture Specification.
+You are a Security Architect and Lead QA Auditor. Your task is to validate the AISLES Android application build against the Technical Architecture Specification.
 
 ## 1. Architectural Fidelity
 - Verify the State Machine transitions: Are all triggers (IDLE -> ORDER_NOTIFICATION -> etc.) implemented?
@@ -19,5 +19,6 @@ You are a Security Architect and Lead QA Auditor. Your task is to validate the S
 - Connectivity: Is the offline-first SQLite queue implemented for cellular dead zones?
 
 ## 4. Output Validation
-- Ensure `san_build_spec.txt` accurately reflects the implementation.
+- Ensure `AISLES_build_spec.txt` accurately reflects the implementation.
 - Validate `module_contract.json` for integration with Nikolai.
+

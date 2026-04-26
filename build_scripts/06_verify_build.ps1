@@ -1,5 +1,5 @@
 # ---------------------------------------------------------
-# Nikolai 0.3 ‚Äì Build Verification (Fresh Build)
+# Nikolai 0.3 ‚Ä?Build Verification (Fresh Build)
 # Runs reflex tests and verifies structural integrity.
 # ---------------------------------------------------------
 
@@ -28,7 +28,7 @@ $requiredFiles = @(
     "$root\brain\silica\state_machine.py",
     "$root\brain\silica\node_coordinator.py",
     "$root\brain\silica\bridge_python.py",
-    "$root\brain\silica\bridge_san.py",
+    "$root\brain\silica\bridge_AISLES.py",
 
     "$root\nikolai.py",
     "$root\nikolai.ps1",
@@ -44,10 +44,10 @@ $missing = $false
 Write-Host "Checking required files..."
 foreach ($file in $requiredFiles) {
     if (-not (Test-Path $file)) {
-        Write-Host "‚ùå Missing: $file"
+        Write-Host "‚ù?Missing: $file"
         $missing = $true
     } else {
-        Write-Host "‚úî Found: $file"
+        Write-Host "‚ú?Found: $file"
     }
 }
 
@@ -58,14 +58,14 @@ $packageDirs = @(
 foreach ($dir in $packageDirs) {
     $init = Join-Path $dir "__init__.py"
     if (-not (Test-Path $init)) {
-        Write-Host "‚ùå Missing package init: $init"
+        Write-Host "‚ù?Missing package init: $init"
         $missing = $true
     }
 }
 
 if ($missing) {
     Write-Host ""
-    Write-Host "Build verification failed ‚Äî missing files detected."
+    Write-Host "Build verification failed ‚Ä?missing files detected."
     exit 1
 }
 
@@ -79,7 +79,7 @@ Write-Host "Validating JSON files..."
 
 $jsonFiles = @(
     "$root\spine\project_spine.json",
-    "$root\modules\ShopperModule\pipeline\incoming\module_contract.json",
+    "$root\modules\Module_AISLES\pipeline\incoming\module_contract.json",
     "$root\modules\HelpDiagnosticModule\pipeline\incoming\module_contract.json"
 )
 
@@ -88,10 +88,10 @@ foreach ($jsonFile in $jsonFiles) {
     if (Test-Path $jsonFile) {
         try {
             Get-Content $jsonFile | ConvertFrom-Json | Out-Null
-            Write-Host "‚úî Valid JSON: $jsonFile"
+            Write-Host "‚ú?Valid JSON: $jsonFile"
         }
         catch {
-            Write-Host "‚ùå Invalid JSON: $jsonFile"
+            Write-Host "‚ù?Invalid JSON: $jsonFile"
             $jsonError = $true
         }
     }
@@ -99,7 +99,7 @@ foreach ($jsonFile in $jsonFiles) {
 
 if ($jsonError) {
     Write-Host ""
-    Write-Host "Build verification failed ‚Äî JSON errors detected."
+    Write-Host "Build verification failed ‚Ä?JSON errors detected."
     exit 1
 }
 
@@ -118,22 +118,22 @@ $pyFiles = Get-ChildItem -Path "$root\brain" -Filter *.py -Recurse
 foreach ($pyFile in $pyFiles) {
     $result = & $python -m py_compile $pyFile.FullName 2>&1
     if ($lastExitCode -ne 0) {
-        Write-Host "‚ùå Syntax Error: $($pyFile.FullName)"
+        Write-Host "‚ù?Syntax Error: $($pyFile.FullName)"
         Write-Host $result
         $syntaxError = $true
     } else {
-        Write-Host "‚úî Syntax OK: $($pyFile.FullName)"
+        Write-Host "‚ú?Syntax OK: $($pyFile.FullName)"
     }
 }
 
 if ($syntaxError) {
     Write-Host ""
-    Write-Host "Build verification failed ‚Äî Python syntax errors detected."
+    Write-Host "Build verification failed ‚Ä?Python syntax errors detected."
     exit 1
 }
 
 Write-Host ""
-Write-Host "‚úî All Python files verified."
+Write-Host "‚ú?All Python files verified."
 Write-Host ""
 
 
@@ -142,3 +142,5 @@ Write-Host "---------------------------------------------"
 Write-Host "Nikolai 0.3 build verification successful."
 Write-Host "The organism is structurally sound."
 Write-Host "---------------------------------------------"
+
+

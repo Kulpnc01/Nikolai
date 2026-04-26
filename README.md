@@ -1,11 +1,11 @@
-# Nikolai 0.3 — Hybrid Asynchronous Cognitive Engine
+# Nikolai 0.3 �?Hybrid Asynchronous Cognitive Engine
 
 Nikolai 0.3 is a high-performance, edge-coordinated cognitive engine designed for low-latency logistical assistance and autonomous UI interaction.
 
 ## 🚀 Key Features
 - **Hybrid Cognitive Architecture:** Separation of high-level reasoning (Executive Layer) and fast-reflex I/O (Phi Silica Layer).
 - **Asynchronous Core:** Built on `asyncio` for non-blocking telemetry ingestion and command dispatch.
-- **Edge Node Coordination:** Native support for Android-based Shopper Assistant Nodes (SAN) via secure gRPC.
+- **Edge Node Coordination:** Native support for Android-based Shopper Assistant Nodes (AISLES) via secure gRPC.
 - **Secure Mesh Networking:** All communication is routed over an encrypted Tailscale/WireGuard tunnel.
 - **Contract-Driven Modules:** Dynamic module loading and validation system.
 
@@ -16,7 +16,7 @@ Nikolai 0.3 is a high-performance, edge-coordinated cognitive engine designed fo
 - `Docs/`: Comprehensive technical architecture and guides.
 - `build_scripts/`: Sequenced (00-07) "Self-Healing" build pipeline.
 
-## 🛠️ Installation & Usage
+## 🛠�?Installation & Usage
 
 ### 1. Prerequisites
 - Python 3.12+ (Python 3.14 recommended)
@@ -46,3 +46,4 @@ Nikolai 0.3 is governed by the principles of architectural locking and zero-drif
 ---
 **Version:** 0.3 (Hardened Async)
 **Author:** Kulpnc01
+

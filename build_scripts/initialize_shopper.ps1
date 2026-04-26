@@ -1,9 +1,9 @@
-You are initializing the Shopper Assistant Node (SAN) development environment.
+You are initializing the Shopper Assistant Node (AISLES) development environment.
 
 Your tasks:
 
 1. Prepare the DevDrive on E:\ for module development.
-   - Create E:\Nikolai\Modules\ShopperModule\
+   - Create E:\Nikolai\Modules\Module_AISLES\
    - Create subdirectories:
        /spec
        /contracts
@@ -16,7 +16,7 @@ Your tasks:
 2. Create the Shopper Module integration contract.
    - Define expected inputs from GCLI (build spec, file tree, code artifacts).
    - Define expected outputs to GCLI (status, validation, runtime constraints).
-   - Define the runtime interface between SAN and Nikolai:
+   - Define the runtime interface between AISLES and Nikolai:
        - Data ingestion API
        - Overlay instruction API
        - UI automation instruction schema
@@ -35,15 +35,16 @@ Your tasks:
        - Stream navigation/media to head units
 
 4. Prepare the pipeline interface.
-   - Create E:\Nikolai\Modules\ShopperModule\pipeline\incoming\
-   - Create E:\Nikolai\Modules\ShopperModule\pipeline\outgoing\
+   - Create E:\Nikolai\Modules\Module_AISLES\pipeline\incoming\
+   - Create E:\Nikolai\Modules\Module_AISLES\pipeline\outgoing\
    - GCLI will place build artifacts in /incoming
    - Nikolai will place validation reports in /outgoing
 
 5. Wait for GCLI to deliver:
-   - san_build_spec.txt
-   - san_final_spec.txt
+   - AISLES_build_spec.txt
+   - AISLES_final_spec.txt
    - android_app_source.zip
    - module_contract.json
 
 When the files arrive, validate them and prepare the module for compilation and deployment.
+

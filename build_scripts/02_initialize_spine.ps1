@@ -1,5 +1,5 @@
 # ---------------------------------------------------------
-# Nikolai 0.3 â€“ Spine Initialization (Fresh Build)
+# Nikolai 0.3 â€?Spine Initialization (Fresh Build)
 # Creates a guaranteed-valid project spine with a stable schema.
 # ---------------------------------------------------------
 
@@ -36,8 +36,9 @@ $spine = [PSCustomObject]@{
 $spinePath = "$root\spine\project_spine.json"
 $spine | ConvertTo-Json -Depth 10 | Set-Content $spinePath
 
-Write-Host "âœ” Spine initialized at: $spinePath"
-Write-Host "âœ” Schema guaranteed."
-Write-Host "âœ” JSON valid."
+Write-Host "âœ?Spine initialized at: $spinePath"
+Write-Host "âœ?Schema guaranteed."
+Write-Host "âœ?JSON valid."
 Write-Host ""
 Write-Host "Nikolai 0.3 spine is ready."
+

@@ -1,5 +1,5 @@
 # ---------------------------------------------------------
-# Nikolai 0.3 ‚Äì Activation Preparation (Fresh Build)
+# Nikolai 0.3 ‚Ä?Activation Preparation (Fresh Build)
 # Prepares the environment for safe runtime activation.
 # Does NOT activate the runtime.
 # ---------------------------------------------------------
@@ -21,7 +21,7 @@ $timestamp = Get-Date -Format "yyyy-MM-dd_HH-mm-ss"
 foreach ($log in @($runtimeLog, $errorLog)) {
 
     if (-not (Test-Path $log)) {
-        Write-Host "‚ùå Missing log: $log"
+        Write-Host "‚ù?Missing log: $log"
         Write-Host "Creating fresh log..."
         Set-Content $log "# Log created during activation prep ($timestamp)"
         continue
@@ -31,13 +31,13 @@ foreach ($log in @($runtimeLog, $errorLog)) {
     $size = (Get-Item $log).Length
     if ($size -gt 1MB) {
         $backup = "$log.$timestamp.bak"
-        Write-Host "‚ö† Log too large, rotating: $log"
+        Write-Host "‚ö?Log too large, rotating: $log"
         Copy-Item $log $backup
         Clear-Content $log
         Add-Content $log "# Log rotated during activation prep ($timestamp)"
     }
 
-    Write-Host "‚úî Log OK: $log"
+    Write-Host "‚ú?Log OK: $log"
 }
 
 Write-Host ""
@@ -50,10 +50,10 @@ Write-Host "Validating project spine..."
 
 try {
     Get-Content "$root\spine\project_spine.json" | ConvertFrom-Json | Out-Null
-    Write-Host "‚úî Spine JSON valid."
+    Write-Host "‚ú?Spine JSON valid."
 }
 catch {
-    Write-Host "‚ùå Spine JSON invalid ‚Äî activation cannot proceed."
+    Write-Host "‚ù?Spine JSON invalid ‚Ä?activation cannot proceed."
     exit 1
 }
 
@@ -70,11 +70,11 @@ $process = Start-Process $python -ArgumentList "`"$testPath`"" -NoNewWindow -Pas
 
 if ($process.ExitCode -ne 0) {
     Write-Host ""
-    Write-Host "‚ùå Reflex tests failed ‚Äî activation blocked."
+    Write-Host "‚ù?Reflex tests failed ‚Ä?activation blocked."
     exit 1
 }
 
-Write-Host "‚úî Reflex tests passed."
+Write-Host "‚ú?Reflex tests passed."
 Write-Host ""
 
 
@@ -100,11 +100,11 @@ Remove-Item $tempFile -Force
 
 if ($process.ExitCode -ne 0) {
     Write-Host ""
-    Write-Host "‚ùå Runtime failed to load ‚Äî activation blocked."
+    Write-Host "‚ù?Runtime failed to load ‚Ä?activation blocked."
     exit 1
 }
 
-Write-Host "‚úî Runtime loads cleanly."
+Write-Host "‚ú?Runtime loads cleanly."
 Write-Host ""
 
 

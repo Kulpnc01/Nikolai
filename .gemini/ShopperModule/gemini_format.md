@@ -4,7 +4,7 @@ You are a technical editor and systems architect.
 
 Your job is to:
 
-1. Read the provided Shopper Assistant Node (SAN) research material.
+1. Read the provided Shopper Assistant Node (AISLES) research material.
 2. Rewrite it into a **single, coherent, RFC‑style technical specification in Markdown**.
 3. Generate **supporting research prompts** that can be used later to deepen or extend the design.
 
@@ -30,7 +30,7 @@ You will be given:
 
 Assume the content describes:
 
-- An Android Accessibility‑driven **Shopper Assistant Node (SAN)**
+- An Android Accessibility‑driven **Shopper Assistant Node (AISLES)**
 - Integration with an external cognitive engine called **Nikolai**
 - OCR, Accessibility, Termux/Tailscale, BLE, WebRTC, security, and state machines
 
@@ -82,7 +82,7 @@ You may add subsections as needed, but **do not change the top‑level section n
 At the top of the document, include a YAML‑style metadata header:
 
 ---
-title: "Shopper Assistant Node (SAN) — Technical Architecture Specification"
+title: "Shopper Assistant Node (AISLES) �?Technical Architecture Specification"
 version: "1.0"
 author: "Nicholas"
 status: "Draft"
@@ -91,7 +91,7 @@ document_type: "Technical Specification"
 
 Followed by an H1 title:
 
-# Shopper Assistant Node (SAN) — Technical Architecture Specification
+# Shopper Assistant Node (AISLES) �?Technical Architecture Specification
 
 ---
 
@@ -118,7 +118,7 @@ Generate a Markdown TOC with anchor links, e.g.:
 ### Headings
 
 - Use `#` only for the main title.
-- Use `##` for top‑level sections (1–11).
+- Use `##` for top‑level sections (1�?1).
 - Use `###` and below for subsections.
 
 Example:
@@ -190,7 +190,7 @@ Use ASCII diagrams to illustrate:
 Example:
 
 +------------------------+
-|  Android SAN (Node)    |
+|  Android AISLES (Node)    |
 +-----------+------------+
             |
             v
@@ -211,8 +211,8 @@ Keep diagrams simple and readable.
 
 ## 1. Executive Summary
 
-- 2–4 paragraphs.
-- Explain **why** the SAN exists.
+- 2�? paragraphs.
+- Explain **why** the AISLES exists.
 - Emphasize:
   - Cognitive load on shoppers
   - Need for autonomous assistance
@@ -225,7 +225,7 @@ Keep diagrams simple and readable.
 
 - Provide a **high‑level architecture diagram** (ASCII).
 - Describe the main components:
-  - Android SAN app
+  - Android AISLES app
   - AccessibilityService
   - OCR engine
   - Communication layer (Termux/Tailscale)
@@ -259,7 +259,7 @@ Include:
 
 Include:
 
-- Normal flow (IDLE → COMPLETION).
+- Normal flow (IDLE �?COMPLETION).
 - Error recovery (e.g., substitution dialogs, offline handling).
 
 ---
@@ -295,7 +295,7 @@ Include:
 
 - A table comparing JSON vs Protobuf (perf, size).
 - An ASCII diagram of the data path:
-  - SAN → Termux → Tailscale → Nikolai → back.
+  - AISLES �?Termux �?Tailscale �?Nikolai �?back.
 
 ---
 
@@ -312,7 +312,7 @@ Include:
 Include:
 
 - A connection‑phase table (Discovery, Handshake, Streaming).
-- A small diagram of phone ↔ wearable.
+- A small diagram of phone �?wearable.
 
 ---
 
@@ -326,7 +326,7 @@ Include:
 
 Include:
 
-- A diagram: SAN → WebRTC → Head Unit.
+- A diagram: AISLES �?WebRTC �?Head Unit.
 - Notes on latency and why WebRTC over RTMP/Miracast.
 
 ---
@@ -384,18 +384,18 @@ After producing the main spec, generate a **separate section at the end** titled
 
 ## Research Prompts for Further Exploration
 
-Under it, produce **10–20 reusable prompts** that:
+Under it, produce **10�?0 reusable prompts** that:
 
 - Are written as instructions to an AI assistant.
 - Target deeper exploration or refinement of specific subsystems.
-- Are self‑contained and reference the SAN spec.
+- Are self‑contained and reference the AISLES spec.
 
 Examples:
 
-- "Given the SAN technical spec, propose an alternative OCR architecture that reduces on-device compute while preserving layout fidelity."
-- "Using the SAN state machine, design a fault-injection test plan that validates recovery from network loss during STORE_NAVIGATION."
+- "Given the AISLES technical spec, propose an alternative OCR architecture that reduces on-device compute while preserving layout fidelity."
+- "Using the AISLES state machine, design a fault-injection test plan that validates recovery from network loss during STORE_NAVIGATION."
 - "Based on the communication layer described, suggest a migration path from gRPC to QUIC while maintaining Protobuf payloads."
-- "Given the BLE architecture, design a protocol for AR glasses to request on-demand route summaries from the SAN."
+- "Given the BLE architecture, design a protocol for AR glasses to request on-demand route summaries from the AISLES."
 
 These prompts must be:
 
@@ -424,5 +424,5 @@ If something is ambiguous in the source, you may:
 
 1. Read all provided research files.
 2. Synthesize them into **one** RFC‑style Markdown spec following the rules above.
-3. Append a **“Research Prompts for Further Exploration”** section at the end.
+3. Append a **“Research Prompts for Further Exploration�?* section at the end.
 4. Return the final document as plain Markdown, no extra commentary.

@@ -1,5 +1,5 @@
 # ---------------------------------------------------------
-# Nikolai 0.3 â€“ Hands Initialization (Fresh Build)
+# Nikolai 0.3 â€?Hands Initialization (Fresh Build)
 # Populates the coding partner module with clean scaffolding.
 # Enforces VS Codeâ€“friendly Markdown spacing.
 # ---------------------------------------------------------
@@ -9,7 +9,7 @@ $root = "C:\Nikolai_0_3"
 # --- Coding Partner Processor ---
 $processor = @"
 
-# Coding Partner Processor â€“ Nikolai 0.3
+# Coding Partner Processor â€?Nikolai 0.3
 
 class CodingPartner:
     def __init__(self):
@@ -43,7 +43,7 @@ Set-Content "$root\hands\processor.py" $processor
 # --- Constraint Definitions ---
 $constraints = @"
 
-# Constraint Definitions â€“ Nikolai 0.3
+# Constraint Definitions â€?Nikolai 0.3
 
 CONSTRAINTS = {
 
@@ -67,7 +67,7 @@ Set-Content "$root\hands\constraints.py" $constraints
 # --- Architecture Rules ---
 $rules = @"
 
-# Architecture Rules â€“ Nikolai 0.3
+# Architecture Rules â€?Nikolai 0.3
 
 RULES = [
 
@@ -88,4 +88,4 @@ RULES = [
 Set-Content "$root\hands\architecture_rules.py" $rules
 
 
-Write-Host "Nikolai 0.3 hands initialized â€” mechanical layer ready."
+Write-Host "Nikolai 0.3 hands initialized â€?mechanical layer ready."

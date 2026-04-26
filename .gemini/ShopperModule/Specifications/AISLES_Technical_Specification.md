@@ -1,12 +1,12 @@
 ---
-title: "Shopper Assistant Node (SAN) â€” Technical Architecture Specification"
+title: "Shopper Assistant Node (AISLES) â€?Technical Architecture Specification"
 version: "1.0"
 author: "Nicholas"
 status: "Draft"
 document_type: "Technical Specification"
 ---
 
-# Shopper Assistant Node (SAN) â€” Technical Architecture Specification
+# Shopper Assistant Node (AISLES) â€?Technical Architecture Specification
 
 - [1. Executive Summary](#1-executive-summary)
 - [2. System Overview](#2-system-overview)
@@ -22,21 +22,21 @@ document_type: "Technical Specification"
 
 ## 1. Executive Summary
 
-The Shopper Assistant Node (SAN) is designed to alleviate the extreme cognitive and physical demands placed on gig-economy fulfillment operators, specifically within platforms like Shipt. The contemporary shopper must navigate complex retail environments while simultaneously managing deeply nested digital interfaces and real-time client communications. This constant context-switching creates a high cognitive load that impacts efficiency and safety.
+The Shopper Assistant Node (AISLES) is designed to alleviate the extreme cognitive and physical demands placed on gig-economy fulfillment operators, specifically within platforms like Shipt. The contemporary shopper must navigate complex retail environments while simultaneously managing deeply nested digital interfaces and real-time client communications. This constant context-switching creates a high cognitive load that impacts efficiency and safety.
 
-The SAN operates as an autonomous edge-computing proxy on Android, bridging the gap between physical retail execution and an external high-order cognitive system named "Nikolai." By utilizing Android's AccessibilityService and MediaProjection APIs, the node creates a local-first, low-latency interface capable of environmental interaction without requiring manual input.
+The AISLES operates as an autonomous edge-computing proxy on Android, bridging the gap between physical retail execution and an external high-order cognitive system named "Nikolai." By utilizing Android's AccessibilityService and MediaProjection APIs, the node creates a local-first, low-latency interface capable of environmental interaction without requiring manual input.
 
 Key capabilities include background UI introspection, hybrid data extraction (Accessibility Tree + OCR), secure peer-to-peer communication via Tailscale/WireGuard, and multimodal output via AR overlays, wearable haptics, and vehicle head-unit streaming. This system transforms the shopper from a manual data entry operator into a high-level logistical supervisor assisted by real-time intelligence.
 
 ## 2. System Overview
 
-The SAN architecture is a distributed system consisting of the Android mobile node, a Linux-based cognitive core (Nikolai), and various peripheral interfaces.
+The AISLES architecture is a distributed system consisting of the Android mobile node, a Linux-based cognitive core (Nikolai), and various peripheral interfaces.
 
 ### High-Level Architecture Diagram
 
 ```text
 +-----------------------------------------------------------+
-| Android SAN (Mobile Node)                                 |
+| Android AISLES (Mobile Node)                                 |
 | +-------------------+       +---------------------------+ |
 | | Accessibility     |       | OCR Pipeline (PaddleOCR)  | |
 | | Service           |       | (ONNX Runtime)            | |
@@ -63,7 +63,7 @@ The SAN architecture is a distributed system consisting of the Android mobile no
 ```
 
 ### Major Subsystems
-- **Android SAN App:** The host application managing the lifecycle of background services.
+- **Android AISLES App:** The host application managing the lifecycle of background services.
 - **AccessibilityService:** The primary "eyes" and "hands" of the system for UI interaction.
 - **OCR Engine:** On-device PaddleOCR v5 for parsing non-textual or obfuscated UI elements.
 - **Communication Layer:** A userspace Tailscale implementation within Termux for secure P2P links.
@@ -90,7 +90,7 @@ To optimize battery and CPU, the service filters for specific event types:
 - `TYPE_VIEW_CLICKED`: Tracking operator progress and confirmation.
 
 ### 3.3 Dynamic List Extraction (RecyclerView Traversal)
-Since `RecyclerView` recycles off-screen nodes, the SAN implements an autonomous scrolling loop to extract full shopping lists.
+Since `RecyclerView` recycles off-screen nodes, the AISLES implements an autonomous scrolling loop to extract full shopping lists.
 
 ```java
 // Logic: Scroll -> Capture -> Hash -> Deduplicate -> Repeat
@@ -107,7 +107,7 @@ while (!isAtEndOfList) {
 
 ## 4. Shopper App State Machine
 
-The SAN's behavior is governed by a deterministic state machine to ensure safe and predictable UI interaction.
+The AISLES's behavior is governed by a deterministic state machine to ensure safe and predictable UI interaction.
 
 ### 4.1 State Transition Matrix
 
@@ -138,7 +138,7 @@ The SAN's behavior is governed by a deterministic state machine to ensure safe a
 
 ## 5. Data Extraction and OCR Pipeline
 
-The SAN employs a hybrid strategy to extract structured data from unstructured or obfuscated graphical layouts.
+The AISLES employs a hybrid strategy to extract structured data from unstructured or obfuscated graphical layouts.
 
 ### 5.1 Extraction Targets
 - **Item Metadata:** Name, brand, SKU.
@@ -179,7 +179,7 @@ An **Offline-First SQLite Queue** ensures eventual consistency. If the tailnet l
 
 ## 7. Wearables and Bluetooth Architecture
 
-The SAN acts as a BLE Peripheral to support hands-free operation.
+The AISLES acts as a BLE Peripheral to support hands-free operation.
 
 ### 7.1 Protocol Stack (GATT & L2CAP)
 - **GATT Server:** Used for low-bandwidth haptic triggers and status notifications.
@@ -195,7 +195,7 @@ The SAN acts as a BLE Peripheral to support hands-free operation.
 
 ## 8. Media Streaming and Head Unit Integration
 
-During the delivery phase, the SAN streams navigation to the vehicle head unit using WebRTC.
+During the delivery phase, the AISLES streams navigation to the vehicle head unit using WebRTC.
 
 ### 8.1 Streaming Pipeline
 1. **Capture:** `MediaProjection` API captures the navigation app window.
@@ -210,11 +210,11 @@ The system operates with elevated privileges and follows a "Zero-Trust" edge mod
 ### 9.1 Core Protections
 - **Local-First Processing:** OCR bitmaps are processed entirely on-device; only normalized metadata is transmitted.
 - **Transport Encryption:** All traffic is encapsulated in WireGuard (ChaCha20 + Curve25519).
-- **Screen Protection:** `FLAG_SECURE` is applied to internal SAN config screens to prevent third-party scraping.
+- **Screen Protection:** `FLAG_SECURE` is applied to internal AISLES config screens to prevent third-party scraping.
 - **Process Isolation:** IPC between Android App and Termux is restricted via Unix domain sockets and UID-based intent filtering.
 
 > **Note:**
-> This system possesses elevated privileges (Accessibility, MediaProjection). Any breach of the Nikolai-SAN link could expose real-time user activity. Transport security via Tailscale is non-negotiable.
+> This system possesses elevated privileges (Accessibility, MediaProjection). Any breach of the Nikolai-AISLES link could expose real-time user activity. Transport security via Tailscale is non-negotiable.
 
 ## 10. Implementation Roadmap
 
@@ -326,18 +326,19 @@ void scrapeDynamicList(AccessibilityNodeInfo rootNode) {
 
 ## Research Prompts for Further Exploration
 
-1. "Given the SAN technical spec, propose an alternative OCR architecture that reduces on-device compute while preserving layout fidelity."
-2. "Using the SAN state machine, design a fault-injection test plan that validates recovery from network loss during STORE_NAVIGATION."
+1. "Given the AISLES technical spec, propose an alternative OCR architecture that reduces on-device compute while preserving layout fidelity."
+2. "Using the AISLES state machine, design a fault-injection test plan that validates recovery from network loss during STORE_NAVIGATION."
 3. "Based on the communication layer described, suggest a migration path from gRPC to QUIC while maintaining Protobuf payloads."
-4. "Given the BLE architecture, design a protocol for AR glasses to request on-demand route summaries from the SAN."
+4. "Given the BLE architecture, design a protocol for AR glasses to request on-demand route summaries from the AISLES."
 5. "Propose a reinforcement learning model for Nikolai that optimizes 'Substitution Selection' based on the ERROR_RECOVERY state telemetry."
 6. "Design a privacy-preserving 'Redaction Overlay' that uses the OCR pipeline to identify and hide customer names on the Android screen during MediaProjection."
-7. "Analyze the impact of Android 15's 'Private Space' feature on the SAN's ability to bind to the Shipt AccessibilityService."
+7. "Analyze the impact of Android 15's 'Private Space' feature on the AISLES's ability to bind to the Shipt AccessibilityService."
 8. "Develop a power-consumption profile comparing BLE GATT notifications vs. L2CAP streaming for continuous navigation updates."
 9. "Propose a deduplication algorithm for the LIST_EXTRACTION phase that handles variable-height RecyclerView items without explicit unique IDs."
-10. "Design a gRPC-based health-check protocol that allows Nikolai to remotely reset the SAN state machine if 'STALL' is detected."
+10. "Design a gRPC-based health-check protocol that allows Nikolai to remotely reset the AISLES state machine if 'STALL' is detected."
 11. "Evaluate the feasibility of using WebGL overlays instead of standard Android Views to reduce the memory footprint of the STORE_NAVIGATION map."
-12. "Describe how the SAN could utilize Android's Ultra-Wideband (UWB) APIs to improve item localization accuracy within the aisle geofence."
+12. "Describe how the AISLES could utilize Android's Ultra-Wideband (UWB) APIs to improve item localization accuracy within the aisle geofence."
 13. "Create a Protobuf definition for a 'Vibration Pattern' message that allows Nikolai to send custom haptic feedback sequences to BLE wearables."
-14. "Suggest a method for the SAN to detect 'Physical Layout Mismatch' where the store's physical aisles do not match Nikolai's TSP route."
-15. "Propose a strategy for the SAN to handle multi-window mode where Shipt and a navigation app are both visible, impacting Accessibility tree parsing."
+14. "Suggest a method for the AISLES to detect 'Physical Layout Mismatch' where the store's physical aisles do not match Nikolai's TSP route."
+15. "Propose a strategy for the AISLES to handle multi-window mode where Shipt and a navigation app are both visible, impacting Accessibility tree parsing."
+

@@ -1,5 +1,5 @@
 # ---------------------------------------------------------
-# Nikolai 0.3 â€“ Skeleton Initialization (Fresh Build)
+# Nikolai 0.3 â€?Skeleton Initialization (Fresh Build)
 # Populates architecture, memory, and error model documents.
 # Enforces VS Codeâ€“friendly Markdown spacing.
 # ---------------------------------------------------------
@@ -9,7 +9,7 @@ $root = "C:\Nikolai_0_3"
 # --- Runtime Architecture ---
 $runtimeArch = @"
 
-# Runtime Architecture â€“ Nikolai 0.3
+# Runtime Architecture â€?Nikolai 0.3
 
 ## Overview
 
@@ -49,7 +49,7 @@ Set-Content "$root\skeleton\runtime_architecture.md" $runtimeArch
 # --- Memory Model ---
 $memoryModel = @"
 
-# Memory Model â€“ Nikolai 0.3
+# Memory Model â€?Nikolai 0.3
 
 ## Memory Layers
 
@@ -78,7 +78,7 @@ Set-Content "$root\skeleton\memory_model.md" $memoryModel
 # --- Error Model ---
 $errorModel = @"
 
-# Error Model â€“ Nikolai 0.3
+# Error Model â€?Nikolai 0.3
 
 ## Recoverable Errors
 
@@ -102,4 +102,4 @@ On unrecoverable errors, halt and escalate.
 Set-Content "$root\skeleton\error_model.md" $errorModel
 
 
-Write-Host "Nikolai 0.3 skeleton initialized â€” bones are in place."
+Write-Host "Nikolai 0.3 skeleton initialized â€?bones are in place."

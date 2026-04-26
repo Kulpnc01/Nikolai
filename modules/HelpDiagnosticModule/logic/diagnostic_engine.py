@@ -25,9 +25,9 @@ class DiagnosticEngine:
         if any(k in q for k in ["architecture", "silica", "reflex", "how does it work"]):
             return await self._get_architectural_help()
 
-        # 2. Check for Operational Queries (SAN/Shopper)
-        if any(k in q for k in ["shopper", "san", "shipt", "node"]):
-            return await self._get_san_help(context)
+        # 2. Check for Operational Queries (AISLES/Shopper)
+        if any(k in q for k in ["shopper", "AISLES", "shipt", "node"]):
+            return await self._get_AISLES_help(context)
 
         # 3. Check for Diagnostic/Error Queries
         if any(k in q for k in ["error", "problem", "issue", "diagnose"]):
@@ -37,7 +37,7 @@ class DiagnosticEngine:
         return (
             "I can help with the following areas:\n"
             "- **Architecture:** Explain Phi Silica and the Executive layers.\n"
-            "- **SAN Operations:** Help with Shopper Module and Android nodes.\n"
+            "- **AISLES Operations:** Help with Shopper Module and Android nodes.\n"
             "- **System Diagnostics:** Analyze logs and current runtime state.\n"
             "What would you like to explore?"
         )
@@ -50,14 +50,14 @@ class DiagnosticEngine:
             return f"### Nikolai 0.3 Architecture\n{content[:500]}...\n\n(See {arch_file} for full details)"
         return "Technical architecture documentation is currently missing."
 
-    async def _get_san_help(self, context: dict) -> str:
-        san_spec = self.root_dir / ".gemini" / "ShopperModule" / "Specifications" / "SAN_Technical_Specification.md"
+    async def _get_AISLES_help(self, context: dict) -> str:
+        AISLES_spec = self.root_dir / ".gemini" / "ShopperModule" / "Specifications" / "AISLES_Technical_Specification.md"
         state = context.get("silica_state", "IDLE")
         
-        response = f"### SAN Status: {state}\n"
-        if san_spec.exists():
-            response += "The SAN (Shopper Assistant Node) is a low-latency Android bridge to Nikolai.\n"
-            response += f"Reference: {san_spec}"
+        response = f"### AISLES Status: {state}\n"
+        if AISLES_spec.exists():
+            response += "The AISLES (Shopper Assistant Node) is a low-latency Android bridge to Nikolai.\n"
+            response += f"Reference: {AISLES_spec}"
         else:
             response += "Shopper Assistant Node specifications are not currently loaded."
         return response
@@ -77,3 +77,4 @@ class DiagnosticEngine:
             report += f"- **Recent Error:** {last_event['error']}\n"
             
         return report
+

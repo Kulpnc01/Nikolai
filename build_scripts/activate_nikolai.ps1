@@ -1,5 +1,5 @@
 # ---------------------------------------------------------
-# Nikolai 0.3 ‚Äì Controlled Activation Script (Fresh Build)
+# Nikolai 0.3 ‚Ä?Controlled Activation Script (Fresh Build)
 # Safely instantiates the runtime and prints activation status.
 # Does NOT enter a loop or autonomous mode.
 # ---------------------------------------------------------
@@ -13,7 +13,7 @@ Write-Host ""
 $verifyScript = "$root\build_scripts\verify_build.ps1"
 
 if (-not (Test-Path $verifyScript)) {
-    Write-Host "‚ùå Missing verify_build.ps1 ‚Äî cannot activate."
+    Write-Host "‚ù?Missing verify_build.ps1 ‚Ä?cannot activate."
     exit 1
 }
 
@@ -24,12 +24,12 @@ $verify = Start-Process pwsh -ArgumentList "-File `"$verifyScript`"" -NoNewWindo
 
 if ($verify.ExitCode -ne 0) {
     Write-Host ""
-    Write-Host "‚ùå Build verification failed ‚Äî activation aborted."
+    Write-Host "‚ù?Build verification failed ‚Ä?activation aborted."
     exit 1
 }
 
 Write-Host ""
-Write-Host "‚úî Build verified."
+Write-Host "‚ú?Build verified."
 Write-Host ""
 
 
@@ -60,7 +60,7 @@ Remove-Item $tempFile -Force
 
 if ($process.ExitCode -ne 0) {
     Write-Host ""
-    Write-Host "‚ùå Activation failed ‚Äî runtime error."
+    Write-Host "‚ù?Activation failed ‚Ä?runtime error."
     exit 1
 }
 
@@ -69,3 +69,4 @@ Write-Host "---------------------------------------------"
 Write-Host "Nikolai 0.3 is awake."
 Write-Host "Runtime instantiated successfully."
 Write-Host "---------------------------------------------"
+

@@ -11,7 +11,7 @@ class SilicaStateMachine:
         self.current_state = "IDLE"
         
         self.event_loop.subscribe("intent_prepare_shopper_module", self._to_shopper)
-        self.event_loop.subscribe("san_navigation_start", self._to_nav)
+        self.event_loop.subscribe("AISLES_navigation_start", self._to_nav)
         self.event_loop.subscribe("system_error", self._to_error)
         self.event_loop.subscribe("return_to_idle", self._to_idle)
 
@@ -25,3 +25,4 @@ class SilicaStateMachine:
     async def _to_nav(self, payload): await self._transition("NAVIGATION_MODE", payload)
     async def _to_error(self, payload): await self._transition("ERROR_MODE", payload)
     async def _to_idle(self, payload): await self._transition("IDLE", payload)
+

@@ -21,7 +21,7 @@ from brain.silica.module_loader import SilicaModuleLoader
 from brain.silica.state_machine import SilicaStateMachine
 from brain.silica.node_coordinator import SilicaNodeCoordinator
 from brain.silica.bridge_python import SilicaPythonBridge
-from brain.silica.bridge_san import SilicaSANBridge
+from brain.silica.bridge_AISLES import SilicaAISLESBridge
 
 async def async_main() -> None:
     # 1. Setup Async Executive Layer
@@ -43,7 +43,7 @@ async def async_main() -> None:
     loader = SilicaModuleLoader(silica_loop)
     state_machine = SilicaStateMachine(silica_loop)
     coordinator = SilicaNodeCoordinator(silica_loop)
-    san_bridge = SilicaSANBridge(silica_loop)
+    AISLES_bridge = SilicaAISLESBridge(silica_loop)
     
     # Bridge Handshake
     # Silica talking to Python
@@ -54,7 +54,7 @@ async def async_main() -> None:
     # 3. Schedule Background Tasks
     # All tasks run in the main asyncio loop
     asyncio.create_task(watcher.watch_loop())
-    asyncio.create_task(san_bridge.start_grpc_server())
+    asyncio.create_task(AISLES_bridge.start_grpc_server())
     asyncio.create_task(bridge.process_incoming())
     asyncio.create_task(silica_loop.start())
 
@@ -73,3 +73,4 @@ if __name__ == "__main__":
         asyncio.run(async_main())
     except KeyboardInterrupt:
         pass
+

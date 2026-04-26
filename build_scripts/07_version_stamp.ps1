@@ -1,5 +1,5 @@
 # ---------------------------------------------------------
-# Nikolai 0.3 ‚Äì Version Stamp Script (Unbreakable Edition)
+# Nikolai 0.3 ‚Ä?Version Stamp Script (Unbreakable Edition)
 # Repairs spine if empty, null, or invalid. Then stamps version.
 # ---------------------------------------------------------
 
@@ -16,7 +16,7 @@ Set-Content "$root\VERSION" $version
 $spinePath = "$root\spine\project_spine.json"
 
 if (-not (Test-Path $spinePath)) {
-    Write-Host "‚ùå Spine file missing ‚Äî creating new spine."
+    Write-Host "‚ù?Spine file missing ‚Ä?creating new spine."
     $raw = ""
 } else {
     $raw = Get-Content $spinePath -Raw
@@ -24,14 +24,14 @@ if (-not (Test-Path $spinePath)) {
 
 # Detect empty or whitespace-only file
 if ([string]::IsNullOrWhiteSpace($raw)) {
-    Write-Host "‚ö† Spine file is empty ‚Äî rebuilding spine."
+    Write-Host "‚ö?Spine file is empty ‚Ä?rebuilding spine."
     $spine = $null
 } else {
     try {
         $spine = $raw | ConvertFrom-Json
     }
     catch {
-        Write-Host "‚ùå Spine JSON invalid ‚Äî rebuilding spine."
+        Write-Host "‚ù?Spine JSON invalid ‚Ä?rebuilding spine."
         $spine = $null
     }
 }
@@ -39,7 +39,7 @@ if ([string]::IsNullOrWhiteSpace($raw)) {
 # If spine is null or not an object, rebuild it
 if ($spine -eq $null -or $spine.PSObject.Properties.Count -eq 0) {
 
-    Write-Host "‚ö† Creating new spine object."
+    Write-Host "‚ö?Creating new spine object."
 
     $spine = [PSCustomObject]@{
         version     = $version
@@ -62,10 +62,10 @@ if ($spine -eq $null -or $spine.PSObject.Properties.Count -eq 0) {
 else {
     # Update or add version field
     if ($spine.PSObject.Properties.Name -notcontains "version") {
-        Write-Host "Version field missing ‚Äî adding it."
+        Write-Host "Version field missing ‚Ä?adding it."
         $spine | Add-Member -NotePropertyName "version" -NotePropertyValue $version
     } else {
-        Write-Host "Version field found ‚Äî updating it."
+        Write-Host "Version field found ‚Ä?updating it."
         $spine.version = $version
     }
 }
@@ -74,5 +74,5 @@ else {
 $spine | ConvertTo-Json -Depth 10 | Set-Content $spinePath
 
 Write-Host ""
-Write-Host "‚úî Version stamped successfully."
+Write-Host "‚ú?Version stamped successfully."
 Write-Host "Current version: $version"

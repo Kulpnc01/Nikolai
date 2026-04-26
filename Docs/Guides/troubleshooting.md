@@ -1,14 +1,14 @@
 # Nikolai 0.3 Troubleshooting Guide
 
 ## 1. Connection Issues
-### "SAN Node Offline"
+### "AISLES Node Offline"
 - **Cause:** Tailscale is not running or the node ID is incorrect.
 - **Fix:** Verify Tailscale status (`tailscale status`). Ensure the node is authorized on your tailnet.
 
 ## 2. Module Loading Failures
 ### "Module Not Activated"
 - **Cause:** Missing `module_contract.json` or incorrect ZIP artifact naming.
-- **Fix:** Check `modules/<ModuleName>/pipeline/incoming/`. Ensure the source artifact matches the naming convention (e.g., `shopper_assistant_node_san.zip`).
+- **Fix:** Check `modules/<ModuleName>/pipeline/incoming/`. Ensure the source artifact matches the naming convention (e.g., `shopper_assistant_node_AISLES.zip`).
 
 ## 3. Runtime Exceptions
 ### "RuntimeError: Event loop is already running"
@@ -19,3 +19,4 @@
 Use the built-in diagnostic engine for real-time analysis:
 `> help diagnose system`
 This will parse current telemetry and identify bottlenecks or errors in the reflex layer.
+

@@ -1,5 +1,5 @@
 # ---------------------------------------------------------
-# Nikolai 0.3 â€“ Async Executive Layer Initialization
+# Nikolai 0.3 â€?Async Executive Layer Initialization
 # Installs the async core runtime, context, bridge, intent engine, 
 # and task manager.
 # ---------------------------------------------------------
@@ -480,3 +480,4 @@ class AsyncRespondLoop:
 Set-Content "$coreDir\async_respond_loop.py" $asyncRespond
 
 Write-Host "Nikolai 0.3 Async Executive Layer initialized."
+

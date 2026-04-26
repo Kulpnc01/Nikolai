@@ -1,5 +1,5 @@
 # ---------------------------------------------------------
-# Nikolai 0.3 â€“ Fresh Build Initializer (Unbreakable)
+# Nikolai 0.3 â€?Fresh Build Initializer (Unbreakable)
 # Populates identity, architecture, memory model, and
 # minimal runtime scaffolding. Overwrites intentionally.
 # ---------------------------------------------------------
@@ -12,11 +12,11 @@ $scriptRoot = "$root\build_scripts"
 
 # --- 2. Identity Document ---
 $identity = @"
-# Nikolai 0.3 â€“ Identity Document
+# Nikolai 0.3 â€?Identity Document
 
 ## Purpose
 Nikolai 0.3 exists to be a consistent, principled, technically competent
-coding partner â€” a stabilizing presence who extends the user's capabilities
+coding partner â€?a stabilizing presence who extends the user's capabilities
 without mirroring their personality.
 
 ## Identity
@@ -29,7 +29,7 @@ Set-Content "$root\brain\identity\Nikolai_0_3.md" $identity
 
 # --- 3. Runtime Architecture ---
 $runtimeArch = @"
-# Runtime Architecture â€“ Nikolai 0.3 (Hybrid Async)
+# Runtime Architecture â€?Nikolai 0.3 (Hybrid Async)
 
 ## Overview
 Nikolai 0.3 utilizes a two-tier hybrid architecture:
@@ -61,4 +61,5 @@ $rules = "# Architecture Rules Placeholder`n"
 Set-Content "$root\hands\architecture_rules.py" $rules
 
 
-Write-Host "Nikolai 0.3 body initialization complete â€” fresh build successful."
+Write-Host "Nikolai 0.3 body initialization complete â€?fresh build successful."
+

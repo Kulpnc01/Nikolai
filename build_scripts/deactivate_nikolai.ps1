@@ -1,5 +1,5 @@
 # ---------------------------------------------------------
-# Nikolai 0.3 â€“ Controlled Deactivation
+# Nikolai 0.3 â€?Controlled Deactivation
 # Ensures no runtime processes remain active.
 # ---------------------------------------------------------
 
@@ -12,9 +12,9 @@ $pythonProcesses = Get-Process python -ErrorAction SilentlyContinue
 if ($pythonProcesses) {
     Write-Host "Found active Python processes. Terminating..."
     $pythonProcesses | Stop-Process -Force
-    Write-Host "âœ” Python processes terminated."
+    Write-Host "âœ?Python processes terminated."
 } else {
-    Write-Host "âœ” No active Python processes found."
+    Write-Host "âœ?No active Python processes found."
 }
 
 Write-Host ""

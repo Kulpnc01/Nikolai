@@ -5,7 +5,7 @@ Nikolai 0.3 is a hybrid asynchronous cognitive engine designed for low-latency c
 ## 1. Environment Requirements
 - **Python:** 3.12+ (Python 3.14 recommended for optimized async execution).
 - **PowerShell:** PowerShell Core (pwsh) for system orchestration.
-- **Tailscale:** Required for secure communication with Shopper Assistant Nodes (SAN).
+- **Tailscale:** Required for secure communication with Shopper Assistant Nodes (AISLES).
 
 ## 2. Launching the System
 Nikolai is launched via the PowerShell system entry point, which anchors the architectural context.
@@ -26,3 +26,4 @@ Once online, you will see the hybrid async core active.
 ## 4. Understanding the Layers
 - **Executive Layer (The Slow Brain):** Handles your intents, plans, and memory.
 - **Reflex Layer (The Fast Brain):** Watches for incoming files and manages live node connections (gRPC).
+

@@ -1,6 +1,6 @@
-# GCLI_BUILD_PROMPT â€” SAN Android Application
+# GCLI_BUILD_PROMPT â€?AISLES Android Application
 
-You are a Senior Android Engineer tasked with implementing the Shopper Assistant Node (SAN) as defined in the Technical Architecture Specification (C:\Nikolai_0_3\.gemini\ShopperModule\Specifications\SAN_Technical_Specification.md).
+You are a Senior Android Engineer tasked with implementing the Shopper Assistant Node (AISLES) as defined in the Technical Architecture Specification (C:\Nikolai_0_3\.gemini\ShopperModule\Specifications\AISLES_Technical_Specification.md).
 
 ## 1. Implementation Plan
 Develop a phased implementation strategy:
@@ -30,5 +30,6 @@ Generate a standard Android project layout:
 - Implement an offline-first SQLite queue for telemetry persistence.
 
 ## 5. Output Requirements
-- Generate `san_build_spec.txt` (Detailed technical summary of the implementation).
+- Generate `AISLES_build_spec.txt` (Detailed technical summary of the implementation).
 - Prepare all source files for `android_app_source.zip`.
+

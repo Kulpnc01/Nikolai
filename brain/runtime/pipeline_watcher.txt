@@ -15,8 +15,8 @@ class PipelineWatcher:
         self.module_root = module_root
         self.incoming = module_root / "pipeline" / "incoming"
         self.expected = {
-            "san_build_spec.txt",
-            "san_final_spec.txt",
+            "AISLES_build_spec.txt",
+            "AISLES_final_spec.txt",
             "android_app_source.zip",
             "module_contract.json",
         }

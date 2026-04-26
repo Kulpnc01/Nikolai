@@ -42,7 +42,7 @@ class SilicaModuleLoader:
 
     def _unpack_and_validate(self, module_path: Path) -> bool:
         incoming = module_path / "pipeline" / "incoming"
-        zip_path = incoming / "shopper_assistant_node_san.zip"
+        zip_path = incoming / "shopper_assistant_node_AISLES.zip"
         extract_dir = module_path / "android_app"
         
         try:
@@ -54,3 +54,4 @@ class SilicaModuleLoader:
         except Exception as e:
             logger.error(f"Failed to unpack {zip_path}: {e}")
         return False
+

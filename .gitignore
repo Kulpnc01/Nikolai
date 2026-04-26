@@ -12,6 +12,13 @@ spine/*.log
 *.sqlite
 Nikolai_Flattened_Dump.txt
 
+# Module Protection
+# We keep the folder and its __init__, but ignore specific sub-modules
+# EXCEPT for the built-in HelpDiagnosticModule
+modules/*
+!modules/__init__.py
+!modules/HelpDiagnosticModule/
+
 # Gemini Temporary Files (Protecting Instructions)
 .gemini/tmp/
 .gemini/history/
