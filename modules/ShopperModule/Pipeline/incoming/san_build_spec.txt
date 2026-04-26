@@ -1,0 +1,41 @@
+# Shopper Assistant Node (SAN) — Build Specification
+
+## 1. Project Overview
+- **Name:** Shopper Assistant Node (SAN)
+- **Platform:** Android (API 30+)
+- **Architecture:** Local-first Edge Proxy / Background Accessibility Service
+
+## 2. Implemented Subsystems
+### 2.1 Accessibility Architecture
+- **Service:** `ShopperAccessibilityService`
+- **Logic:** Implements TYPE_WINDOW_STATE_CHANGED and TYPE_VIEW_SCROLLED filters.
+- **Traversal:** DFS-based RecyclerView scraping with deterministic hashing (SHA-256) of node metadata.
+
+### 2.2 OCR & Fusion Engine
+- **Runtime:** ONNX Runtime Mobile v1.17.
+- **Model:** PaddleOCR v5 (DB+SVTR).
+- **Fusion Logic:** Spatial alignment fusion for quantity and aisle metadata extraction.
+
+### 2.3 State Machine
+- **Controller:** `ShopperStateMachine`
+- **States:** IDLE, ORDER_NOTIFICATION, ORDER_ACCEPTANCE, LIST_EXTRACTION, STORE_NAVIGATION, ERROR_RECOVERY, DELIVERY_NAVIGATION.
+
+### 2.4 Communication Layer
+- **Environment:** Termux Userland Bridge.
+- **Protocol:** Protobuf v3 / gRPC over Tailscale SOCKS5 Proxy.
+- **Queue:** Encrypted SQLite (SQLCipher) for offline persistence.
+
+### 2.5 Output Channels
+- **Overlays:** `WindowManager` TYPE_APPLICATION_OVERLAY with dynamic transparency.
+- **BLE:** BluetoothGattServer hosting for haptics + L2CAP channels for high-bandwidth data.
+- **Streaming:** WebRTC MediaProjection mirroring via Tailscale P2P.
+
+## 3. Security Implementation
+- **UID Isolation:** Termux IPC bound to internal app UID.
+- **Encryption:** 100% WireGuard encapsulation for off-device traffic.
+- **UI Security:** `FLAG_SECURE` enabled for configuration and credential activities.
+
+## 4. Testing Status
+- **Unit Tests:** State transitions and Protobuf serialization verified.
+- **Integration Tests:** Simulated RecyclerView traversal and deduplication verified.
+- **HIL Tests:** BLE L2CAP handshake and WebRTC stream latency within 500ms.

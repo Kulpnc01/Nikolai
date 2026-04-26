@@ -1,0 +1,11 @@
+# Respond Loop – Nikolai 0.3
+
+import sys
+
+
+def respond_loop():
+    """
+    Yields lines of user input from stdin.
+    """
+    for line in sys.stdin:
+        yield line.rstrip("\n")

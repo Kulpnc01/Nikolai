@@ -1,0 +1,29 @@
+{
+  "module_id": "nikolai_help_diagnostic",
+  "version": "1.0.0",
+  "capabilities": [
+    "documentation_retrieval",
+    "runtime_state_analysis",
+    "error_log_parsing",
+    "user_instruction_clarification"
+  ],
+  "interfaces": {
+    "query": {
+      "protocol": "json_rpc",
+      "transport": "event_bus"
+    },
+    "reports": {
+      "protocol": "markdown",
+      "transport": "async_bridge"
+    }
+  },
+  "security_policy": {
+    "read_access": [
+      "c:\\Nikolai_0_3\\Docs",
+      "c:\\Nikolai_0_3\\nervous_system"
+    ],
+    "write_access": [
+      "c:\\Nikolai_0_3\\modules\\HelpDiagnosticModule\\pipeline\\outgoing"
+    ]
+  }
+}

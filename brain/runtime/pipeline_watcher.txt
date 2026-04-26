@@ -1,0 +1,42 @@
+# pipeline_watcher.py
+
+import time
+from pathlib import Path
+from typing import List
+
+
+class PipelineWatcher:
+    """
+    Watches the ShopperModule pipeline/incoming directory
+    and reports when expected artifacts appear.
+    """
+
+    def __init__(self, module_root: Path):
+        self.module_root = module_root
+        self.incoming = module_root / "pipeline" / "incoming"
+        self.expected = {
+            "san_build_spec.txt",
+            "san_final_spec.txt",
+            "android_app_source.zip",
+            "module_contract.json",
+        }
+
+    def check(self) -> List[str]:
+        """
+        Returns a list of artifacts that have arrived.
+        """
+        if not self.incoming.exists():
+            return []
+
+        present = {p.name for p in self.incoming.iterdir() if p.is_file()}
+        return sorted(list(self.expected.intersection(present)))
+
+    def wait_for_artifacts(self, poll_interval: float = 2.0):
+        """
+        Blocks until all expected artifacts are present.
+        """
+        while True:
+            found = self.check()
+            if len(found) == len(self.expected):
+                return found
+            time.sleep(poll_interval)

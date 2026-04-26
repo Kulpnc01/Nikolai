@@ -1,0 +1,102 @@
+# Core Runtime – Nikolai 0.3
+
+import json
+import os
+from pathlib import Path
+
+from brain.reasoning.intent_engine import IntentEngine
+
+
+class CoreRuntime:
+
+    def __init__(self, context_manager=None):
+        self.context = {}
+        self.context_manager = context_manager
+
+        # Load spine
+        self.spine_path = r"C:\Nikolai_0_3\spine\project_spine.json"
+        self.load_spine()
+
+        # NEW: Intent engine
+        from brain.reasoning.intent_engine import IntentEngine
+        self.intent_engine = IntentEngine()
+
+        # NEW: Pipeline watcher
+        from brain.runtime.pipeline_watcher import PipelineWatcher
+        from pathlib import Path
+        self.pipeline_watcher = PipelineWatcher(
+            Path(r"C:\Nikolai_0_3\modules\ShopperModule")
+        )
+
+
+    def load_spine(self):
+        """
+        Loads the project spine into memory.
+        """
+        if not os.path.exists(self.spine_path):
+            raise FileNotFoundError("Project spine missing.")
+
+        with open(self.spine_path, "r") as f:
+            try:
+                self.spine = json.load(f)
+            except json.JSONDecodeError:
+                raise ValueError("Project spine contains invalid JSON.")
+
+    def handle_input(self, user_input: str) -> str:
+        """
+        Main input handler - now uses intent engine.
+        """
+        intent = self.intent_engine.classify(user_input)
+        if intent is None:
+            return ""
+
+        name = intent.name
+
+        if name == "exit":
+            return "Acknowledged. Type 'exit' again to terminate."
+
+        if name == "help":
+            return (
+                "Available commands:\n"
+                "- status\n"
+                "- prepare shopper module\n"
+                "- await gcli pipeline\n"
+                "- exit\n"
+                "You can also speak naturally about the shopper module."
+            )
+
+        if name == "status":
+            return (
+                "[Status]\n"
+                "- Runtime: OK\n"
+                "- Spine loaded: OK\n"
+                "- Shopper module: awaiting build artifacts\n"
+            )
+
+        if name == "prepare_shopper_module":
+            return (
+                "[ShopperModule] Preparation acknowledged.\n"
+                "I will expect build artifacts from GCLI."
+            )
+
+        if name == "await_gcli_pipeline":
+            return (
+                "[Pipeline] Awaiting GCLI pipeline outputs.\n"
+                "Place artifacts in the module pipeline directory."
+            )
+
+        if name == "shopper_generic":
+            return (
+                "[ShopperModule] I recognize you're referring to the shopper module.\n"
+                "Try: 'prepare shopper module' or 'await gcli pipeline'."
+            )
+
+        # fallback
+        return f"I received: {intent.raw_text}"
+
+    def respond(self, user_input):
+        """
+        Main reasoning entry point.
+        Delegates to decision engine and hands module.
+        """
+        return f"Nikolai 0.3 runtime initialized. Input received: {user_input}"

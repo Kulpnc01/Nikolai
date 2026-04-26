@@ -1,29 +1,26 @@
-# Python Environment
+# Python
 __pycache__/
 *.py[cod]
 *$py.class
-.venv/
-env/
 venv/
-venv_py313/
+.env
 
-# Project Data (STRICTLY PRIVATE)
-memory/nikolai_memory.db
-security/vault.key
-REMINDERS.txt
+# Nikolai Specific
+nervous_system/*.log
+spine/*.log
+*.db
+*.sqlite
+Nikolai_Flattened_Dump.txt
 
-# Interface Cache
-interface/__pycache__/
-core/__pycache__/
-memory/__pycache__/
-security/__pycache__/
+# Gemini Temporary Files (Protecting Instructions)
+.gemini/tmp/
+.gemini/history/
+.gemini/state.json
+.gemini/google_accounts.json
+.gemini/oauth_creds.json
 
-# Node Modules
-node_modules/
-package-lock.json
-
-# IDEs
-.vscode/
-.idea/
-*.swp
-*.swo
+# OS/System files
+NTUSER.dat*
+ntuser.dat*
+Thumbs.db
+.DS_Store

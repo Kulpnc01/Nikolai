@@ -1,0 +1,9 @@
+{
+  "name": "HelpDiagnosticModule",
+  "version": "1.0",
+  "status": "active",
+  "description": "System-wide diagnostic and explanatory consultant.",
+  "required_artifacts": [
+    "module_contract.json"
+  ]
+}

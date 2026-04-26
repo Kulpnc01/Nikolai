@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package san;
+
+service ShopperAssistantNode {
+  // SAN pushes telemetry to Nikolai
+  rpc StreamTelemetry (stream TelemetryRequest) returns (TelemetryResponse);
+  
+  // Nikolai pushes commands to SAN
+  rpc StreamCommands (CommandRequest) returns (stream CommandResponse);
+}
+
+message TelemetryRequest {
+  string node_id = 1;
+  string current_state = 2;
+  string payload_json = 3;
+  int64 timestamp = 4;
+}
+
+message TelemetryResponse {
+  bool success = 1;
+}
+
+message CommandRequest {
+  string node_id = 1;
+}
+
+message CommandResponse {
+  string command_id = 1;
+  string action = 2;
+  string parameters_json = 3;
+}

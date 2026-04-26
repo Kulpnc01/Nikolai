@@ -1,0 +1,34 @@
+# GCLI_BUILD_PROMPT — SAN Android Application
+
+You are a Senior Android Engineer tasked with implementing the Shopper Assistant Node (SAN) as defined in the Technical Architecture Specification (C:\Nikolai_0_3\.gemini\ShopperModule\Specifications\SAN_Technical_Specification.md).
+
+## 1. Implementation Plan
+Develop a phased implementation strategy:
+- Phase 1: Accessibility Core & State Machine.
+- Phase 2: OCR Fallback with PaddleOCR (ONNX).
+- Phase 3: Communication Layer (Termux/Tailscale/Protobuf).
+- Phase 4: Overlays, BLE Peripheral hosting, and WebRTC streaming.
+
+## 2. Android Project Structure
+Generate a standard Android project layout:
+- `build.gradle` (Project/App) with dependencies: ONNX Runtime, Protobuf, gRPC, WebRTC, Bluetooth.
+- `AndroidManifest.xml` with permissions: BIND_ACCESSIBILITY_SERVICE, SYSTEM_ALERT_WINDOW, BLUETOOTH_ADVERTISE, BLUETOOTH_CONNECT, FOREGROUND_SERVICE_MEDIA_PROJECTION.
+- Resource files for AccessibilityService configuration.
+
+## 3. Core Modules Implementation
+- **AccessibilityService:** Implement `onAccessibilityEvent` for Shipt UI detection. Build the `scrapeDynamicList` auto-scroll loop with memory-safe `.recycle()` calls.
+- **OCR Engine:** Integrate ONNX Runtime for PaddleOCR v5. Implement the coordinate fusion logic to link OCR text to Accessibility nodes.
+- **State Machine:** Implement a deterministic `ShopperStateMachine` using the states defined in Section 4.1.
+- **Communication Layer:** Implement the Termux IPC broker using Unix domain sockets. Serialize payloads using the provided Protobuf schema. Establish a gRPC stream over the Tailscale SOCKS5 proxy.
+- **Overlay Engine:** Create a floating overlay using `TYPE_APPLICATION_OVERLAY`. Handle lifecycle visibility to avoid "Screen Overlay Detected" security blocks.
+- **BLE Stack:** Configure the device as a BLE Peripheral. Implement GATT services for haptics and L2CAP channels for high-bandwidth map streaming.
+- **Media Subsystem:** Implement `MediaProjection` captured to a WebRTC pipeline for vehicle head-unit mirroring.
+
+## 4. Security & Performance
+- Enforce `FLAG_SECURE` on sensitive windows.
+- Use `START_STICKY` and partial WakeLocks for persistent background operation.
+- Implement an offline-first SQLite queue for telemetry persistence.
+
+## 5. Output Requirements
+- Generate `san_build_spec.txt` (Detailed technical summary of the implementation).
+- Prepare all source files for `android_app_source.zip`.
